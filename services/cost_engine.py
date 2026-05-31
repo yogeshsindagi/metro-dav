@@ -1,5 +1,5 @@
 from utils.data_loader import load_data
-from utils.graph import build_graph, shortest_distance
+from utils.graph import build_graph, shortest_path_info
 from utils.fare import compute_fare
 
 stations_df, edges_df, fare_rules = load_data()
@@ -7,12 +7,14 @@ graph = build_graph(edges_df)
 
 
 def compute_route(source, destination, last_mile):
-    distance = shortest_distance(graph, source, destination)
+    dist_hops = shortest_path_info(graph, source, destination)
 
-    if distance is None:
+    if dist_hops == (None, None):
         return None
+        
+    distance, hops = dist_hops
 
-    metro_fare = compute_fare(distance, fare_rules)
+    metro_fare = compute_fare(hops)
     metro_cost = metro_fare + (last_mile * 20 * 2)
 
     car_cost = distance * 10 + 50
@@ -54,12 +56,14 @@ def generate_matrix(last_mile):
     }
 
 def compute_threshold(source, destination):
-    distance = shortest_distance(graph, source, destination)
+    dist_hops = shortest_path_info(graph, source, destination)
 
-    if distance is None:
+    if dist_hops == (None, None):
         return None
+        
+    distance, hops = dist_hops
 
-    metro_fare = compute_fare(distance, fare_rules)
+    metro_fare = compute_fare(hops)
 
     car_cost = distance * 10 + 50
     auto_rate = 20
@@ -83,11 +87,13 @@ def compute_station_zone(source):
             if source == dest:
                 continue
 
-            distance = shortest_distance(graph, source, dest)
-            if distance is None:
+            dist_hops = shortest_path_info(graph, source, dest)
+            if dist_hops == (None, None):
                 continue
+                
+            distance, hops = dist_hops
 
-            metro_fare = compute_fare(distance, fare_rules)
+            metro_fare = compute_fare(hops)
             metro_cost = metro_fare + (last_mile * 20 * 2)
 
             car_cost = distance * 10 + 50

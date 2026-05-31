@@ -2,7 +2,7 @@ from fastapi import APIRouter
 from pydantic import BaseModel
 
 from utils.data_loader import load_data
-from utils.graph import build_graph, shortest_distance
+from utils.graph import build_graph, shortest_path_info
 from utils.fare import compute_fare
 
 from services.car_model import compute_car_cost
@@ -62,12 +62,13 @@ def compare(req: CompareRequest):
     # -------------------------
     # METRO DISTANCE (GRAPH)
     # -------------------------
-    metro_distance = shortest_distance(graph, source, destination)
+    dist_hops = shortest_path_info(graph, source, destination)
 
-    if metro_distance is None:
+    if dist_hops == (None, None):
         return {"error": "Invalid route"}
 
-    metro_fare = compute_fare(metro_distance, fare_rules)
+    metro_distance, hops = dist_hops
+    metro_fare = compute_fare(hops)
 
     # -------------------------
     # LAST MILE COST (Simple calculation)
