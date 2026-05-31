@@ -95,11 +95,14 @@ def compare(req: CompareRequest):
     if road_distance is None:
         road_distance = metro_distance
 
+    # Add total last mile to the car distance
+    total_car_distance = road_distance + req.last_mile_km
+
     # -------------------------
     # CAR COST (USER CONFIG)
     # -------------------------
     car_cost = compute_car_cost(
-        distance_km=road_distance,
+        distance_km=total_car_distance,
         mileage=req.car_config.mileage,
         fuel_price=req.car_config.fuel_price,
         extra_cost=req.car_config.extra_cost,
@@ -111,7 +114,7 @@ def compare(req: CompareRequest):
     winner = "metro" if metro_cost < car_cost else "car"
 
     return {
-        "distance_km": round(road_distance, 2),
+        "distance_km": round(total_car_distance, 2),
         "metro_cost": round(metro_cost, 2),
         "car_cost": car_cost,
         "winner": winner,
