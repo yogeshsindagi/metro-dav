@@ -1,0 +1,78 @@
+from_station,to_station,distance_km
+Challaghatta,Kengeri,1.36
+Kengeri,Kengeri Bus Terminal,0.67
+Kengeri Bus Terminal,Pattanagere,2.04
+Pattanagere,Jnanabharathi,1.19
+Jnanabharathi,Rajarajeshwari Nagar,1.35
+Rajarajeshwari Nagar,Nayandahalli,1.5
+Nayandahalli,Mysuru Road,1.32
+Mysuru Road,Deepanjali Nagar,1.34
+Deepanjali Nagar,Attiguppe,1.32
+Attiguppe,Vijayanagar,1.17
+Vijayanagar,Hosahalli,1.16
+Hosahalli,Magadi Road,0.83
+Magadi Road,City Railway Station,1.26
+City Railway Station,Majestic,0.5
+Majestic,Central College,1.36
+Central College,Vidhana Soudha,0.87
+Vidhana Soudha,Cubbon Park,0.46
+Cubbon Park,MG Road,1.32
+MG Road,Trinity,1.21
+Trinity,Halasuru,1.0
+Halasuru,Indiranagar,1.75
+Indiranagar,Swami Vivekananda Road,0.83
+Swami Vivekananda Road,Baiyappanahalli,0.62
+Baiyappanahalli,Benniganahalli,0.16
+Benniganahalli,Krishnarajapuram,1.35
+Krishnarajapuram,Mahadevapura,2.28
+Mahadevapura,Garudacharapalya,1.11
+Garudacharapalya,Hoodi,1.11
+Hoodi,Sitharama Palya,1.1
+Sitharama Palya,Kundalahalli,1.15
+Kundalahalli,Nallurhalli,1.18
+Nallurhalli,Sri Sathya Sai Hospital,1.15
+Sri Sathya Sai Hospital,Pattandur Agrahara,1.1
+Pattandur Agrahara,Kadugodi Tree Park,1.1
+Kadugodi Tree Park,Hopefarm Channasandra,1.14
+Hopefarm Channasandra,Whitefield (Kadugodi),1.21
+Nagasandra,Dasarahalli,2.25
+Dasarahalli,Jalahalli,1.54
+Jalahalli,Peenya Industry,0.79
+Peenya Industry,Peenya,0.88
+Peenya,Goraguntepalya,0.76
+Goraguntepalya,Yeshwanthpur,0.69
+Yeshwanthpur,Sandal Soap Factory,0.78
+Sandal Soap Factory,Mahalakshmi,0.84
+Mahalakshmi,Rajajinagar,0.77
+Rajajinagar,Kuvempu Road,0.81
+Kuvempu Road,Srirampura,0.71
+Srirampura,Sampige Road,0.61
+Sampige Road,Majestic,0.6
+Majestic,Chickpete,0.92
+Chickpete,KR Market,0.77
+KR Market,National College,0.78
+National College,Lalbagh,0.8
+Lalbagh,South End Circle,0.75
+South End Circle,Jayanagar,0.77
+Jayanagar,RV Road,0.97
+RV Road,Banashankari,0.63
+Banashankari,J P Nagar,0.76
+J P Nagar,Yelachenahalli,0.8
+Yelachenahalli,Konanakunte Cross,0.76
+Konanakunte Cross,Doddakallasandra,0.79
+Doddakallasandra,Vajarahalli,0.78
+Vajarahalli,Talaghattapura,0.77
+Talaghattapura,Silk Institute,0.71
+RV Road,Jayadeva Hospital,1.41
+Jayadeva Hospital,BTM Layout,1.65
+BTM Layout,Central Silk Board,1.14
+Central Silk Board,Bommanahalli,0.88
+Bommanahalli,Hongasandra,0.76
+Hongasandra,Kudlu Gate,0.76
+Kudlu Gate,Singasandra,0.77
+Singasandra,Hosa Road,0.75
+Hosa Road,Electronic City,1.96
+Electronic City,Infosys Foundation Konappana Agrahara,4.26
+Infosys Foundation Konappana Agrahara,Huskur Road,0.78
+Huskur Road,Hebbagodi,2.33
+Hebbagodi,Bommasandra,7.38
