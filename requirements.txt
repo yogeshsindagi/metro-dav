@@ -3,3 +3,6 @@ uvicorn
 pandas
 requests
 plotly
+openpyxl
+joblib
+scikit-learn

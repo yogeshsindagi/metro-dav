@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from routes import matrix, threshold, zone, stations, compare
+from routes import matrix, threshold, zone, stations, compare, prediction
 
 app = FastAPI()
 
@@ -23,6 +23,7 @@ app.include_router(matrix.router)
 app.include_router(threshold.router)
 app.include_router(zone.router)
 app.include_router(stations.router)
+app.include_router(prediction.router)
 
 @app.get("/")
 def root():
