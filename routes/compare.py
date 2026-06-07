@@ -2,7 +2,7 @@ from fastapi import APIRouter
 from pydantic import BaseModel
 
 from utils.data_loader import load_data
-from utils.graph import build_graph, shortest_distance
+from utils.graph import build_graph, shortest_path_info
 from utils.fare import compute_fare
 
 from services.car_model import compute_car_cost
@@ -62,12 +62,13 @@ def compare(req: CompareRequest):
     # -------------------------
     # METRO DISTANCE (GRAPH)
     # -------------------------
-    metro_distance = shortest_distance(graph, source, destination)
+    dist_hops = shortest_path_info(graph, source, destination)
 
-    if metro_distance is None:
+    if dist_hops == (None, None):
         return {"error": "Invalid route"}
 
-    metro_fare = compute_fare(metro_distance, fare_rules)
+    metro_distance, hops = dist_hops
+    metro_fare = compute_fare(hops)
 
     # -------------------------
     # LAST MILE COST (Simple calculation)
@@ -94,11 +95,14 @@ def compare(req: CompareRequest):
     if road_distance is None:
         road_distance = metro_distance
 
+    # Add total last mile to the car distance
+    total_car_distance = road_distance + req.last_mile_km
+
     # -------------------------
     # CAR COST (USER CONFIG)
     # -------------------------
     car_cost = compute_car_cost(
-        distance_km=road_distance,
+        distance_km=total_car_distance,
         mileage=req.car_config.mileage,
         fuel_price=req.car_config.fuel_price,
         extra_cost=req.car_config.extra_cost,
@@ -110,7 +114,7 @@ def compare(req: CompareRequest):
     winner = "metro" if metro_cost < car_cost else "car"
 
     return {
-        "distance_km": round(road_distance, 2),
+        "distance_km": round(total_car_distance, 2),
         "metro_cost": round(metro_cost, 2),
         "car_cost": car_cost,
         "winner": winner,
